@@ -3,7 +3,9 @@ import initTranslations from '@/app/i18n';
 import i18nConfig from '@/app/i18n-config';
 import TranslationProvider from '@/components/translations-provider';
 import GlobalLayout from '@/layout/global-layout';
+import { cn } from '@/lib/utils';
 import type { Metadata } from 'next';
+import { IBM_Plex_Mono, Noto_Sans_Thai } from 'next/font/google';
 import React from 'react';
 
 export const metadata: Metadata = {
@@ -24,11 +26,31 @@ export function generateStaticParams() {
 
 const i18nNamespaces = ['common'];
 
+const fontSans = Noto_Sans_Thai({
+  subsets: ['latin', 'thai'],
+  variable: '--font-sans',
+  weight: ['100', '200', '300', '400', '500', '600'],
+});
+
+const fontMono = IBM_Plex_Mono({
+  subsets: ['latin'],
+  variable: '--font-mono',
+  weight: ['400', '500'],
+});
+
 const RootLayout = async ({ children, params: { locale } }: Props) => {
   const { resources } = await initTranslations(locale, i18nNamespaces);
 
   return (
-    <html lang={locale} suppressHydrationWarning>
+    <html
+      lang={locale}
+      className={cn(
+        fontSans.variable,
+        fontMono.variable,
+        'font-sans antialiased',
+      )}
+      suppressHydrationWarning
+    >
       <body>
         <TranslationProvider
           locale={locale}

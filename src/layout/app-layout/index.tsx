@@ -1,10 +1,19 @@
+'use client';
+
 import AppLogo from '@/components/app-logo';
 import { AppLayoutConfig } from '@/config/app-layout-config';
+import { cn } from '@/lib/utils';
 import { UserCircle } from 'lucide-react';
 import Link from 'next/link';
 import { PropsWithChildren } from 'react';
 
 const AppLayout = ({ children }: PropsWithChildren) => {
+  const checkActivePath = (href: string) => {
+    if (typeof window === 'undefined') return false;
+    const currentPath = window?.location?.pathname;
+    return currentPath === href;
+  };
+
   return (
     <div className="h-screen w-screen">
       <div className="flex h-full w-full bg-background">
@@ -28,7 +37,9 @@ const AppLayout = ({ children }: PropsWithChildren) => {
                 {AppLayoutConfig.sidebarNavItems.map((item, index) => (
                   <li
                     key={index}
-                    className="size-9 flex items-center justify-center rounded-lg transition-all duration-300 hover:bg-muted"
+                    className={cn(
+                      'size-9 flex items-center justify-center rounded-lg transition-all duration-300 hover:bg-muted',
+                    )}
                   >
                     <Link href={item.href}>
                       {item.icon ? (

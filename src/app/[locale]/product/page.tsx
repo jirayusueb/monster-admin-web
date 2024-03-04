@@ -54,7 +54,7 @@ export default function Home() {
             <Input
               type="number"
               className="h-8 w-14"
-              min={0}
+              min={1}
               defaultValue={1}
             />
             <small className="font-mono"> / 100</small>
