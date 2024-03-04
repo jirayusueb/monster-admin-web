@@ -1,0 +1,20 @@
+{
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": "explicit"
+  },
+  "prettier.configPath": ".prettierrc",
+  "editor.formatOnSave": true,
+  "javascript.preferences.importModuleSpecifier": "non-relative",
+  "javascript.preferences.renameMatchingJsxTags": false,
+  "tailwindCSS.experimental.classRegex": [
+    ["cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"],
+    ["cn\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"],
+    ["tw=\"([^\"]*)\""]
+  ],
+  "tailwindCSS.includeLanguages": {
+    "plaintext": "html"
+  },
+  "typescript.preferences.importModuleSpecifier": "non-relative",
+  "typescript.preferences.renameMatchingJsxTags": false,
+  "typescript.tsdk": "node_modules/typescript/lib"
+}
