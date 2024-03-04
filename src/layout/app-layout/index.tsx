@@ -8,12 +8,6 @@ import Link from 'next/link';
 import { PropsWithChildren } from 'react';
 
 const AppLayout = ({ children }: PropsWithChildren) => {
-  const checkActivePath = (href: string) => {
-    if (typeof window === 'undefined') return false;
-    const currentPath = window?.location?.pathname;
-    return currentPath === href;
-  };
-
   return (
     <div className="h-screen w-screen">
       <div className="flex h-full w-full bg-background">
